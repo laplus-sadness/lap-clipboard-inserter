@@ -1,0 +1,5 @@
+# Ignore everything
+*
+
+# Except for the source folder
+!src/*.ts
