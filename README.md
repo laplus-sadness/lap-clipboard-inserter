@@ -38,11 +38,20 @@ Building the extension requires `npm`. To build it, clone this repo and run:
 npm install
 # Build the extension without generating source map files and with optimizations
 npm run build
-# Build the extension for debugging
-npm run start
+# Build the extension for debugging purposes
+npm run dev
 ```
 
 After this, you can use a program like `web-ext` to run or test the extension.
+
+### Firefox
+
+If you are going to use this in Firefox, you also need to substitute all references of `chrome` to `browser` in `dist/bundle.js`, for example:
+
+```shell
+cd dist
+sed -i 's/chrome/browser/g' bundle.js
+```
 
 ## Acknowledgements
 
