@@ -4,7 +4,7 @@ export interface ClipboardInserter {
     interval: number;
 }
 
-export interface Request {
+interface Request {
     action: "insert" | "uninject";
     content: string;
 }
@@ -17,7 +17,7 @@ function sendMessageToTabs(tabs: number[], request: Request) {
     }
 }
 
-export function notifyChange(clipboardInserter: ClipboardInserter) {
+function notifyChange(clipboardInserter: ClipboardInserter) {
     navigator.clipboard.readText().then((clipText) => {
         if (clipText !== "" && clipText !== clipboardInserter.previousText) {
             clipboardInserter.previousText = clipText;
