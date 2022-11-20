@@ -1,6 +1,6 @@
 import { ClipboardInserter, toggleTab } from "./clipboardInserter";
 
-let clipboardInserter: ClipboardInserter = {
+const clipboardInserter: ClipboardInserter = {
     previousText: "",
     listeningTabs: [],
     interval: 0,
