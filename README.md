@@ -4,7 +4,7 @@ A browser extension whose purpose is to repetitively insert the system clipboard
 
 ## Demonstration
 
-[!Gif demonstrating the extension](static/demonstration.gif)
+![Gif demonstrating the extension](static/demonstration.gif)
 
 This example uses the [TheMoeWay texthooker page](https://learnjapanese.moe/texthooker.html) in addition to this extension for displaying all the changes that happen to the system clipboard. The Visual Novel in the gif is [H2O -FOOTPRINTS IN THE SAND-](https://vndb.org/v473).
 
@@ -14,7 +14,7 @@ Used alongside a texthooker, e.g. [Textractor](https://github.com/Artikash/Textr
 
 Click the icon of this extension to toggle its functionality.
 
-[!Gif of the extension usage](static/usage.gif)
+![Gif of the extension usage](static/usage.gif)
 
 If the addon is turned off, it won't execute any script or use your browser resources.
 
