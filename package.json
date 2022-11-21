@@ -1,6 +1,6 @@
 {
   "name": "lap-clipboard-inserter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A browser extension whose purpose is to repetitively insert the system clipboard's content into a page",
   "main": "index.js",
   "scripts": {
