@@ -8,7 +8,7 @@ A browser extension whose purpose is to repetitively insert the system clipboard
 
 This example uses the [TheMoeWay texthooker page](https://learnjapanese.moe/texthooker.html) in addition to this extension for displaying all the changes that happen to the system clipboard. The Visual Novel in the gif is [H2O -FOOTPRINTS IN THE SAND-](https://vndb.org/v473).
 
-Used alongside a texthooker, e.g. [Textractor](https://github.com/Artikash/Textractor), it's possible to capture all the text of a Visual Novel, useful to track how many characters you read that day and to easily create [Anki](https://apps.ankiweb.net/) cards. See the [TMW explanation](https://learnjapanese.moe/vn/) of this process for more details.
+Used alongside a texthooker, e.g. [Textractor](https://github.com/Artikash/Textractor), it's possible to capture all the text of a Visual Novel, useful to track how many characters you read at that day and to easily create [Anki](https://apps.ankiweb.net/) cards. See the [TMW explanation of this process](https://learnjapanese.moe/vn/) for more details.
 
 ## Instructions
 
@@ -28,7 +28,15 @@ This extension has the following differences from the [original Clipboard Insert
 
 ## Installation
 
-TODO: provide links.
+### Firefox
+
+You can download it here: [Firefox Browser ADD-ONS](https://addons.mozilla.org/en-US/firefox/addon/lap-clipboard-inserter/)
+
+Note: this version uses the Manifest V2 because Firefox doesn't support Manifest V3 yet. The code can be found under the `manifest-v2` branch.
+
+### Chrome
+
+The extension is currently under review at the Chrome store. This will be updated when they accept it.
 
 ## Building
 
@@ -55,7 +63,7 @@ sed -i 's/chrome/browser/g' bundle.js
 
 ## Acknowledgements
 
-- This project inspired by the [original Clipboard Inserter](https://github.com/kmltml/clipboard-inserter), by [Kamil Tomala](https://github.com/kmltml).
+- This project is inspired by the [original Clipboard Inserter](https://github.com/kmltml/clipboard-inserter), by [Kamil Tomala](https://github.com/kmltml).
 - The icon used by this extension was designed by [Freepik - Flaticon](https://www.flaticon.com/free-icons/clipboard) and can be found in [this page](https://www.flaticon.com/free-icon/paste_748035).
 
 ## License
