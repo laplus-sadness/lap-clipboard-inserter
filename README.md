@@ -28,7 +28,15 @@ This extension has the following differences from the [original Clipboard Insert
 
 ## Installation
 
-TODO: provide links.
+### Firefox
+
+You can download it here: [Firefox Browser ADD-ONS](https://addons.mozilla.org/en-US/firefox/addon/lap-clipboard-inserter/)
+
+Note: this version uses the Manifest V2 because Firefox doesn't support Manifest V3 yet. The code can be found under the `manifest-v2` branch.
+
+### Chrome
+
+The extension is currently under review at the Chrome store. This will be updated when they accept it.
 
 ## Building
 
