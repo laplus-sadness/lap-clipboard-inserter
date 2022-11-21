@@ -2,13 +2,13 @@
     "name": "Lap Clipboard Inserter",
     "description": "A browser extension whose purpose is to repetitively insert the system clipboard's content into a page",
     "version": "1.0.0",
-    "manifest_version": 3,
+    "manifest_version": 2,
     "icons": {
         "16": "icons/icon16.png",
         "32": "icons/icon32.png",
         "64": "icons/icon64.png"
     },
-    "action": {
+    "browser_action": {
         "browser_style": true,
         "default_icon": {
             "16": "icons/icon16.png",
@@ -23,6 +23,6 @@
         "clipboardRead"
     ],
     "background": {
-        "service_worker": "bundle.js"
+        "scripts": ["bundle.js"]
     }
 }
