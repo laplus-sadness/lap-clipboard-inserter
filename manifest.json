@@ -1,6 +1,6 @@
 {
     "name": "Lap Clipboard Inserter",
-    "description": "A browser extension whose purpose is to repetitively insert the system clipboard's content into a page. Uses Clipboard icons created by Freepik - Flaticon, see README.md for more details",
+    "description": "A browser extension whose purpose is to repetitively insert the system clipboard's content into a page",
     "version": "1.0.0",
     "manifest_version": 3,
     "icons": {
