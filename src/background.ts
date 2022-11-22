@@ -12,12 +12,12 @@ chrome.browserAction.onClicked.addListener(() =>
             if (tab.id === undefined) {
                 console.error(
                     "Error when querying the tabs: ClipboardInserter " +
-                        "doesn't work in windows that don't host content " +
-                        "tabs (for example, devtools windows)"
+                    "doesn't work in windows that don't host content " +
+                    "tabs (for example, devtools windows)"
                 );
             } else {
                 toggleTab(clipboardInserter, tab.id);
             }
         }
-    })
+    }).catch((error) => console.error(`Error when querying the tabs: ${error}`))
 );

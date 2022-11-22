@@ -18,15 +18,17 @@ function sendMessageToTabs(tabs: number[], request: Request) {
 }
 
 function notifyChange(clipboardInserter: ClipboardInserter) {
-    navigator.clipboard.readText().then((clipText) => {
-        if (clipText !== "" && clipText !== clipboardInserter.previousText) {
-            clipboardInserter.previousText = clipText;
-            sendMessageToTabs(clipboardInserter.listeningTabs, <Request>{
-                action: "insert",
-                content: clipText,
-            });
-        }
-    });
+    navigator.clipboard.readText()
+        .then((clipText) => {
+            if (clipText !== "" && clipText !== clipboardInserter.previousText) {
+                clipboardInserter.previousText = clipText;
+                sendMessageToTabs(clipboardInserter.listeningTabs, <Request>{
+                    action: "insert",
+                    content: clipText,
+                });
+            }
+        })
+        .catch((error) => console.error(`Failed to read clipboard: ${error}`));
 }
 
 function contentScript() {
