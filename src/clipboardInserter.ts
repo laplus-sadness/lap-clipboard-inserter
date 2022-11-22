@@ -1,7 +1,7 @@
 export interface ClipboardInserter {
     previousText: string;
     listeningTabs: number[];
-    interval: number;
+    interval: ReturnType<typeof setInterval> | undefined;
 }
 
 interface Request {
@@ -51,10 +51,10 @@ export function toggleTab(clipboardInserter: ClipboardInserter, id: number) {
         chrome.browserAction.setBadgeText({ tabId: id, text: "" });
         if (
             clipboardInserter.listeningTabs.length === 0 &&
-            clipboardInserter.interval
+            clipboardInserter.interval !== undefined
         ) {
-            window.clearInterval(clipboardInserter.interval);
-            clipboardInserter.interval = 0;
+            clearInterval(clipboardInserter.interval);
+            clipboardInserter.interval = undefined;
         }
     } else {
         chrome.scripting
@@ -72,7 +72,7 @@ export function toggleTab(clipboardInserter: ClipboardInserter, id: number) {
         });
         chrome.browserAction.setBadgeText({ tabId: id, text: "ON" });
         if (!clipboardInserter.interval) {
-            clipboardInserter.interval = window.setInterval(
+            clipboardInserter.interval = setInterval(
                 notifyChange,
                 300,
                 clipboardInserter

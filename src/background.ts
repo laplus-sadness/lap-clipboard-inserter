@@ -3,7 +3,7 @@ import { ClipboardInserter, toggleTab } from "./clipboardInserter";
 const clipboardInserter: ClipboardInserter = {
     previousText: "",
     listeningTabs: [],
-    interval: 0,
+    interval: undefined,
 };
 
 chrome.browserAction.onClicked.addListener(() =>
