@@ -18,9 +18,13 @@ function sendMessageToTabs(tabs: number[], request: Request) {
 }
 
 function notifyChange(clipboardInserter: ClipboardInserter) {
-    navigator.clipboard.readText()
+    navigator.clipboard
+        .readText()
         .then((clipText) => {
-            if (clipText !== "" && clipText !== clipboardInserter.previousText) {
+            if (
+                clipText !== "" &&
+                clipText !== clipboardInserter.previousText
+            ) {
                 clipboardInserter.previousText = clipText;
                 sendMessageToTabs(clipboardInserter.listeningTabs, <Request>{
                     action: "insert",
