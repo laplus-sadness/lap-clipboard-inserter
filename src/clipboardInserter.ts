@@ -1,7 +1,11 @@
 export interface ClipboardInserter {
     previousText: string;
     listeningTabs: number[];
+}
+
+export interface Background {
     interval: ReturnType<typeof setInterval> | undefined;
+    waitTime: number;
 }
 
 export interface Request {

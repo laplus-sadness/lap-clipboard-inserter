@@ -1,6 +1,6 @@
 {
   "name": "lap-clipboard-inserter",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "A browser extension whose purpose is to repetitively insert the system clipboard's content into a page",
   "main": "index.js",
   "scripts": {
@@ -17,6 +17,7 @@
     "@typescript-eslint/parser": "^5.43.0",
     "copy-webpack-plugin": "^11.0.0",
     "eslint": "^8.28.0",
+    "html-webpack-plugin": "^5.5.0",
     "prettier": "^2.7.1",
     "ts-loader": "^9.4.1",
     "typescript": "^4.9.3",

@@ -1,4 +1,5 @@
 import {
+    Background,
     ClipboardInserter,
     Request,
     notifyChange,
@@ -6,11 +7,30 @@ import {
 } from "./clipboardInserter";
 import { contentScript } from "./content";
 
+const background: Background = {
+    interval: undefined,
+    waitTime: 300,
+};
+
 const clipboardInserter: ClipboardInserter = {
     previousText: "",
     listeningTabs: [],
-    interval: undefined,
 };
+
+chrome.storage.local
+    .get("interval")
+    .then((data) => {
+        if (data.interval) {
+            background.waitTime = data.interval;
+        }
+    })
+    .catch((error) => console.error(`Failed to load options: ${error}`));
+
+chrome.storage.onChanged.addListener((changes, area) => {
+    if (area === "local" && changes.interval?.newValue) {
+        background.waitTime = changes.interval.newValue;
+    }
+});
 
 chrome.browserAction.onClicked.addListener(() =>
     chrome.tabs
@@ -24,7 +44,7 @@ chrome.browserAction.onClicked.addListener(() =>
                             "tabs (for example, devtools windows)"
                     );
                 } else {
-                    toggleTab(clipboardInserter, tab.id);
+                    toggleTab(tab.id);
                 }
             }
         })
@@ -33,7 +53,7 @@ chrome.browserAction.onClicked.addListener(() =>
         )
 );
 
-function toggleTab(clipboardInserter: ClipboardInserter, id: number) {
+function toggleTab(id: number) {
     const index = clipboardInserter.listeningTabs.indexOf(id);
     if (index > -1) {
         sendMessageToTabs([id], <Request>{ action: "eject" });
@@ -41,10 +61,10 @@ function toggleTab(clipboardInserter: ClipboardInserter, id: number) {
         chrome.browserAction.setBadgeText({ tabId: id, text: "" });
         if (
             clipboardInserter.listeningTabs.length === 0 &&
-            clipboardInserter.interval !== undefined
+            background.interval !== undefined
         ) {
-            clearInterval(clipboardInserter.interval);
-            clipboardInserter.interval = undefined;
+            clearInterval(background.interval);
+            background.interval = undefined;
         }
     } else {
         chrome.scripting
@@ -61,10 +81,10 @@ function toggleTab(clipboardInserter: ClipboardInserter, id: number) {
             color: "green",
         });
         chrome.browserAction.setBadgeText({ tabId: id, text: "ON" });
-        if (!clipboardInserter.interval) {
-            clipboardInserter.interval = setInterval(
+        if (!background.interval) {
+            background.interval = setInterval(
                 notifyChange,
-                300,
+                background.waitTime,
                 clipboardInserter
             );
         }
