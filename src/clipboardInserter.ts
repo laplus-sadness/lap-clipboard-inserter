@@ -5,7 +5,7 @@ export interface ClipboardInserter {
 }
 
 interface Request {
-    action: "insert" | "uninject";
+    action: "insert" | "eject";
     content: string;
 }
 
@@ -39,7 +39,7 @@ function contentScript() {
     chrome.runtime.onMessage.addListener(function handleMessage(
         request: Request
     ) {
-        if (request.action === "uninject") {
+        if (request.action === "eject") {
             chrome.runtime.onMessage.removeListener(handleMessage);
         } else {
             const pasteTarget = document.createElement("p");
@@ -52,7 +52,7 @@ function contentScript() {
 export function toggleTab(clipboardInserter: ClipboardInserter, id: number) {
     const index = clipboardInserter.listeningTabs.indexOf(id);
     if (index > -1) {
-        sendMessageToTabs([id], <Request>{ action: "uninject" });
+        sendMessageToTabs([id], <Request>{ action: "eject" });
         clipboardInserter.listeningTabs.splice(index, 1);
         chrome.browserAction.setBadgeText({ tabId: id, text: "" });
         if (
