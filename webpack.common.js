@@ -1,6 +1,5 @@
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: './src/background.ts',
@@ -22,7 +21,7 @@ module.exports = {
     clean: true,
   },
   plugins: [
-    new CopyPlugin({
+    new CopyWebpackPlugin({
       patterns: [
         {from: './manifest.json', to: '../dist/manifest.json'},
         {from: './LICENSE', to: '../dist/LICENSE'},
