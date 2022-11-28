@@ -1,24 +1,29 @@
 import { Background, Request, sendMessageToTab } from "./clipboardInserter";
-import { contentScript } from "./content"
+import { contentScript } from "./content";
 
 const background: Background = {
     listeningTabs: [],
-}
+};
 
 chrome.action.onClicked.addListener(() =>
-    chrome.tabs.query({ active: true, currentWindow: true }).then((tabs) => {
-        for (const tab of tabs) {
-            if (tab.id === undefined) {
-                console.error(
-                    "Error when querying the tabs: ClipboardInserter " +
-                    "doesn't work in windows that don't host content " +
-                    "tabs (for example, devtools windows)"
-                );
-            } else {
-                toggleTab(background, tab.id);
+    chrome.tabs
+        .query({ active: true, currentWindow: true })
+        .then((tabs) => {
+            for (const tab of tabs) {
+                if (tab.id === undefined) {
+                    console.error(
+                        "Error when querying the tabs: ClipboardInserter " +
+                            "doesn't work in windows that don't host content " +
+                            "tabs (for example, devtools windows)"
+                    );
+                } else {
+                    toggleTab(background, tab.id);
+                }
             }
-        }
-    }).catch((error) => console.error(`Error when querying the tabs: ${error}`))
+        })
+        .catch((error) =>
+            console.error(`Error when querying the tabs: ${error}`)
+        )
 );
 
 function toggleTab(background: Background, id: number) {

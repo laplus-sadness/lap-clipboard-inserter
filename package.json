@@ -7,7 +7,7 @@
     "dev": "webpack --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
     "lint": "eslint . --ext .ts",
-    "format": "prettier --check ."
+    "format": "prettier --check 'src/*.ts'"
   },
   "author": "laplus-sadness",
   "license": " GPL-3.0-or-later",
