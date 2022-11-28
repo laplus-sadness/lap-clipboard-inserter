@@ -50,7 +50,7 @@ After this, you can use a program like `web-ext` to run or test the extension.
 
 ### Firefox
 
-If you are going to use this in Firefox, you also need to substitute all references of `chrome` to `browser` in `dist/bundle.js` and `dist/options.js`, for example:
+If you are going to use this in Firefox, you also need to substitute all references of `chrome` to `browser` in `dist/background.js` and `dist/options.js`, for example:
 
 ```shell
 cd dist
